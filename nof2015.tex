@@ -1,0 +1,313 @@
+\documentclass[a4paper]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{ textcomp }
+\usepackage[absolute,overlay]{textpos}
+\graphicspath{{img/}}
+\usetheme{Madrid}
+\usecolortheme{crane}
+\useoutertheme{shadow}
+\usefonttheme{structurebold}
+
+
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+
+\title[Migrating to a NFV-based Home Gateway : the SvNF approach] % (optional, only for long titles)
+{Migrating to a NFV-based Home Gateway}
+\subtitle{Introducing a Surrogate vNF approach}
+\author[\underline{Herbaut}, Negru, Xilouris, Chen] % (optional, for multiple authors)
+{\underline{N.~Herbaut\inst{1}} \and D.~Négru\inst{1} \and G.~Xilouris\inst{2} \and Y.Chen\inst{3} }
+\institute[Universities Here and There] % (optional)
+{
+  \inst{1}%
+  CNRS, LaBRI Lab.\\
+  Université de Bordeaux, France
+  \and
+  \inst{2}%
+  NCSR Demokritos\\
+  Athens, Greece
+  \and
+  \inst{3}%
+  Orange Labs\\
+  Issy-les-moulineaux, France 
+}
+\date[KPT 2004] % (optional)
+{The 6th International Conference On Network of the Future}
+\subject{Computer Science.}
+
+\begin{document}
+\frame{\titlepage}
+
+
+\begin{frame}{Objectives of the paper}
+	
+	\begin{itemize}
+	
+	\item Proposing a technical solution to ease the migration to future Home Gateway technologies.
+	\pause
+	\item Study the feasibility through a concrete usecase.
+	\end{itemize}
+	
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Presentation plan}
+							
+							
+						
+	\begin{columns}[c] % the "c" option specifies center vertical alignment
+		\column{.03\textwidth} % column designated by a command
+		\begin{block}{}
+			\rotatebox{90}{~~~~~Context~~~~~~}
+		\end{block}
+		\column{.25\textwidth} % column designated by a command
+		\begin{block}{1. Home Boxes Today}
+			\includegraphics[width= \textwidth]{homebox.jpg}
+		\end{block}
+		\column{.25\textwidth}
+		\begin{block}{2. Virtual Home Gateway }
+			\includegraphics[width= \textwidth]{vhg.png}
+		\end{block}
+												          
+		\column{.25\textwidth}
+		\begin{block}{3. NFV for Future Networks}
+			\includegraphics[width= \textwidth]{etsinfv.png}
+		\end{block}
+												          
+												      
+	\end{columns}
+					
+	\setbeamercolor{block title}{bg=applegreen}
+					
+						    
+	\begin{columns}[c] % the "c" option specifies center vertical alignment
+		\column{.03\textwidth} % column designated by a command
+		\begin{block}{}
+			\rotatebox{90}{~~~~Proposal~~~~~}
+		\end{block}
+										
+		\column{.25\textwidth} % column designated by a command
+		\begin{block}{4. Easing the Migration}
+			\includegraphics[width= \textwidth]{loco.png}
+		\end{block}
+												 
+		\column{.25\textwidth} % column designated by a command
+		\begin{block}{5. Experiments, Results}
+			\includegraphics[width= \textwidth]{results.png}
+		\end{block}
+												          
+		\column{.25\textwidth} % column designated by a command
+		\begin{block}{6. Discussion \& Conclusion}
+			\includegraphics[width= \textwidth]{etsinfv.png}
+		\end{block}
+												 
+	\end{columns}
+						    
+				
+						    
+						    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{With Customer Permise Equipment (CPE), Service Providers bring a lot of features to Users}
+		
+	
+	\begin{columns}[T] 
+		\begin{column}[T]{0.25 \textwidth} 
+			\includegraphics[width=\linewidth]{livebox.png}
+		\end{column}
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+			\textbf{Home Gateway  (HG)}
+			\begin{itemize}
+				\item Connects the Service Provider Network 
+				\item Network services: NAT, DHCP, Wifi...
+				\item Users-facing services: Printing Service, VoIP, Parental Control...
+				\item New Services: Internet of Things, Home Automation...
+			\end{itemize}
+			\vspace{1em}
+									
+		\end{column}
+						
+	\end{columns}
+		
+		
+			
+		
+	\begin{columns}[T] 
+		\begin{column}[T]{0.25 \textwidth} 
+			\includegraphics[width=\linewidth]{liveboxdec.png}
+		\end{column}
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ Set-Top-Box (STB)}
+			\begin{itemize}
+				\item Decode media IP flows to a display device (through HDMI)
+				\item Live TV, Video On Demand ...
+				\item Catch-up TV, Recording ...
+				\item Legacy Digital terrestrial television ...
+			\end{itemize}
+										     
+									
+		\end{column}
+						
+	\end{columns}
+			
+			
+			
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{CPEs cost a lot to produce and to support}
+	
+	\begin{columns}[T] 
+		\begin{column}[T]{0.15 \textwidth} 
+			\includegraphics[width=3em]{bagofmoney.jpg}
+		\end{column}
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ High Capital Expenditure (CAPEX)}
+			\begin{itemize}
+				\item High design \& Engineering costs
+				\item Supply Chain costs, need for spare devices
+				\item Hardware upgrades can be necessary to rollout new services
+			\end{itemize}
+						\vspace{3em}				     
+									
+		\end{column}
+						
+	\end{columns}
+	
+	
+	\begin{columns}[T] 
+		\begin{column}[T]{0.15 \textwidth} 
+			\includegraphics[width=6em]{customer-care.jpg}
+		\end{column}
+		
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ High Operational Expenditure (OPEX)}
+			\begin{itemize}
+				\item Need to maintain legacy models
+				\item Difficult to update software of a very fragmented installed base
+				\item Costly customer service 
+			\end{itemize}
+										     
+									
+		\end{column}
+						
+	\end{columns}
+	
+	
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{CPEs cost a lot to produce and to support}
+	
+	\begin{columns}[T] 
+		\begin{column}[T]{0.15 \textwidth} 
+			\includegraphics[width=3em]{bagofmoney.jpg}
+		\end{column}
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ High Capital Expenditure (CAPEX)}
+			\begin{itemize}
+				\item High design \& Engineering costs
+				\item Supply Chain costs, need for spare devices
+				\item Hardware upgrades can be necessary to rollout new services
+			\end{itemize}
+						\vspace{3em}				     
+									
+		\end{column}
+						
+	\end{columns}
+	
+	
+	\begin{columns}[T] 
+		\begin{column}[T]{0.15 \textwidth} 
+			\includegraphics[width=6em]{customer-care.jpg}
+		\end{column}
+		
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ High Operational Expenditure (OPEX)}
+			\begin{itemize}
+				\item Need to maintain legacy models
+				\item Difficult to update software of a very fragmented installed base
+				\item Costly customer service 
+			\end{itemize}
+										     
+									
+		\end{column}
+						
+	\end{columns}
+	
+
+\begin{textblock*}{10cm}(1cm,0.5\textheight)
+\begin{alertblock}{}
+\textbf{  How do we fix it? }
+  \begin{itemize}
+    \item Can we design better CPE architecure?
+    \item Can we leverage existing industry proposals?
+  \end{itemize}
+\end{alertblock}
+\end{textblock*}
+	
+\end{frame}
+
+\begin{frame}{Current CPE architectures fail to realize service dynamics but alternatives exists.}
+
+\begin{columns}[T] 
+		\begin{column}[T]{0.15 \textwidth} 
+			\includegraphics[width=3em]{bagofmoney.jpg}
+		\end{column}
+						
+		\begin{column}[T]{0.75 \textwidth} 
+									
+										   
+			\textbf{ High Capital Expenditure (CAPEX)}
+			\begin{itemize}
+				\item High design \& Engineering costs
+				\item Supply Chain costs, need for spare devices
+				\item Hardware upgrades can be necessary to rollout new services
+			\end{itemize}
+						\vspace{3em}				     
+									
+		\end{column}
+						
+	\end{columns}
+
+	
+\end{frame}
+
+\end{document}
