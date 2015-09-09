@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{ textcomp }
+\usepackage{graphicx}
 \usepackage[absolute,overlay]{textpos}
 \graphicspath{{img/}}
 \usetheme{Madrid}
@@ -11,6 +12,7 @@
 \setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
 \definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{applegreendark}{rgb}{0.35, 0.51, 0.0}
 \definecolor{applegreenpale}{rgb}{0.75, 0.91, 0.2}
 
 \title[Migrating to a NFV-based Home Gateway : the SvNF approach] % (optional, only for long titles)
@@ -719,24 +721,24 @@
 \begin{frame}{Feasibility Study illustrated by a Content Delivery Use case}
 	\begin{columns}[T]
 		\begin{column}[T]{0.33 \textwidth} 
-			\vspace{1cm}
+			\vspace{1.5cm}
 			\includegraphics[width=12em]{results.png}
 		\end{column}
 										
 		\begin{column}[T]{0.66\textwidth} 
 										   
-			\textbf{Feasibility}
+			\textbf{Rationale}
 			\begin{itemize}
-				\item  
-				\item 
-				\item 
+				\item We focus on pushing a new service to the HG using the SvNF+vNF approach
+				\item It uses several vNF chained to offer a content distribution service
+				\item More basic NF (NAT, DHCP) are feasible with the same pattern
 			\end{itemize}
 			\vspace{3mm}
-			\textbf{Performance Evalulation}
+			\textbf{Topic we address in the evaluation}
 			\begin{itemize}
-				\item 
-				\item 
-				\item 
+				\item How does the SvNF fits on the HG?
+				\item What is the value brought by the overall service?
+				\item How do we optimize service operations?
 			\end{itemize}
 		\end{column}
 																										
@@ -744,4 +746,206 @@
 								
 \end{frame}
 
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign1.png}
+	\vspace{2em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		A User consumes media on a screen, data is received on her HG from the Content Provider (CP) Distribution Network
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign2.png}
+	\vspace{1em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		Media data is usually hosted on the CP network, but it can also be hosted in a Point Of Presence, a micro datacenter close to the user belonging to the SP network. The Streamer vNF is reponsible for delivery.
+	\end{block}
+\end{frame}
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign3.png}
+	\vspace{2em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		POP and Streamer vNF are provisionning is the responsability of a Caching Orchestrator, placed in the SP public cloud.
+	\end{block}
+\end{frame}
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign3.png}
+	\vspace{2em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		POP and Streamer vNF are provisionning is the responsability of a Caching Orchestrator, placed in the SP public cloud.
+	\end{block}
+		\begin{textblock*}{8cm}(3cm,0.4\textheight)
+		\begin{alertblock}{}
+			\textbf{ How does we forward user request to POP? }
+			\begin{itemize}
+				\item The traditionnal approach is to use DNS-Based Request routing or IP anycast
+				\item Research suggest using Software Defined Networks (SDN) for future deployments
+				\item We take this approach, by allowing the SvNF to route the user request to a particular POP.
+			\end{itemize}
+		\end{alertblock}
+	\end{textblock*}		
+\end{frame}
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign4.png}
+	\vspace{1em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		Caching Orchestrator deploys routing rules to SvNF. SvNF is an HTTP proxy, which allows fine-grained rules to be deployed (domain based, IP based or even content-type based).
+	\end{block}
+\end{frame}
+
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign5.png}
+		\vspace{1em}
+		\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		SvNF collaborates with the Caching Orchestrator to provide data usage statistics that can be used to provision precisely the POPs where data is needed.
+	\end{block}
+
+\end{frame}
+
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign6.png}
+	\vspace{1em}
+	\setbeamercolor{block title}{bg=applegreen}
+	\begin{block}{}
+		The vNF approach allows the Service Provider Delivery Network to handle heavy lifting operations on media, like Transcoding. New transcoding algorithms can be easily pushed to the SP cloud.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}[plain,T]{}
+	\centering
+	\includegraphics[width=0.95\linewidth]{highleveldesign7.png}
+	\vspace{2em}
+	\setbeamercolor{block title}{bg=applegreendark}
+	\begin{block}{}
+		Finally, all the building blocks collaborate to deliver the best version of the media from the best location in the network.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Feasibility study}
+	\begin{columns}[T]
+		\begin{column}[T]{0.55 \textwidth} 
+			\vspace{1em}
+			\includegraphics[width=18em]{highleveldesign7.png}
+		\end{column}
+										
+		\begin{column}[T]{0.35\textwidth} 
+										   
+			\textbf{Topics we address in the evaluation}
+			\begin{itemize}
+				\item How does the SvNF fits on the HG?
+				\item What is the value brought by the overall service?
+				\item How do we optimize service operations?
+			\end{itemize}
+		\end{column}
+																										
+	\end{columns}
+								
+\end{frame}
+
+\begin{frame}{We generated traffic to a gateway with SvNF deployed and compared key metrics}
+
+
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{ c |c |c |c || c |c |c |}
+	
+	
+ 	     & \multicolumn{3}{c}{Web Traffic} 		  & \multicolumn{3}{c}{File Transfer} \\
+ 	     \cline{2-7}	
+              & CPU  			& free Memory (MB) 		& Throughput & CPU 		& free Memory & Throughput  \\
+              & baseline = 1 			& baseline = 693 MB		& baseline=11.5 MBps	&  		&  baseline = 708 MB		& baseline =  11.5 MBps \\\hline   
+Baseline   &   1x 		  & 100\% 		& 100 	    & 1x		& 100\% Mb		& 100 \\\hline
+Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\hline
+\textbf{SvNF} &   \textbf{18x}		  & 98\% 		& 99.5		& \textbf{20x}		& 99.8\%		& $\simeq$100 \\\hline
+\textbf{SvNF with rules}&   \textbf{19x}        & 99\% 		& 99.7		& \textbf{21x}		& 99.4\%		& $\simeq$100 \\\hline
+	
+	            
+	\end{tabular}
+	}
+	
+\vspace{0.5em}
+\small{		SvNF HTTP Proxy vs Squid HTTP Proxy vs Baseline Performances Comparison}
+\vspace{2.5em}
+	\begin{block}{}
+		The study shows stable performance and low memory footprint but a high CPU utilization. Modern HG can support the load without error or added latency.
+	\end{block}
+	
+								
+\end{frame}
+
+\begin{frame}{We simulated 2 scenarios to evaluate overwall performances by counting SLA violations}
+	
+
+		\begin{columns}[T]
+		\begin{column}[T]{0.33 \textwidth} 
+			
+			\includegraphics[width=10em]{highleveldesign1.png}
+		\end{column}
+										
+		\begin{column}[T]{0.66\textwidth} 
+										  
+			\textbf{Scenario A}
+			\begin{itemize}
+				\item All the media are consumed through a link with CP Network
+				\item 50ms latency / 2Gbps bandwidth
+			\end{itemize}
+			\vspace{3mm}
+			
+		\end{column}
+																										
+	\end{columns}
+	
+		\begin{columns}[T]
+		\begin{column}[T]{0.33 \textwidth} 
+		\vspace{2em}
+			\includegraphics[width=10em]{highleveldesign7bis.png}
+		\end{column}
+										
+		\begin{column}[T]{0.66\textwidth} 
+										  
+			\textbf{Scenario B}
+			\begin{itemize}
+				\item Media is consumed from the CP Network and from vNF Streamer on PoP
+				\item For CP: 50ms latency / 1Gbps bandwidth
+				\item For PoP: 25ms latency / 1Gbps bandwidth
+				\item Media is cached in PoP after 3 cache miss
+			\end{itemize}
+			
+		\end{column}
+																										
+	\end{columns}
+	
+	
+	
+\end{frame}
+
+\begin{frame}{For the same bandwidth, our proposal - Scenario B - shows a drastic diminution of SLA violations.}
+	\includegraphics[width=0.90\linewidth]{CP+POP_evaluation.pdf}
+\end{frame}
+
+
+
 \end{document}
+
+
