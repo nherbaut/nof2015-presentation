@@ -48,7 +48,7 @@
 																					
 		\item Proposing a technical solution to ease the migration to future Home Gateway technologies.
 		      \pause
-		\item Study the feasibility through a concrete usecase.
+		\item Study the feasibility through a concrete use case.
 	\end{itemize}
 											
 											
@@ -122,7 +122,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{With Customer Permise Equipment (CPE), Service Providers bring a lot of features to Users}
+\begin{frame}{With Customer Premises Equipment (CPE), Service Providers bring a lot of features to Users}
 												
 											
 	\begin{columns}[T] 
@@ -192,7 +192,7 @@
 			\begin{itemize}
 				\item High design \& Engineering costs
 				\item Supply Chain costs, need for spare devices
-				\item Hardware upgrades can be necessary to rollout new services
+				\item Hardware upgrades can be necessary to roll-out new services
 			\end{itemize}
 			\vspace{3em}				     
 																																							
@@ -245,7 +245,7 @@
 			\begin{itemize}
 				\item High design \& Engineering costs
 				\item Supply Chain costs, need for spare devices
-				\item Hardware upgrades can be necessary to rollout new services
+				\item Hardware upgrades can be necessary to roll-out new services
 			\end{itemize}
 			\vspace{3em}				     
 																																							
@@ -280,8 +280,8 @@
 		\begin{alertblock}{}
 			\textbf{  How do we fix it? }
 			\begin{itemize}
-				\item Can we design better CPE architecure?
-				\item Can we simplyfy the deployment of new services?
+				\item Can we design better CPE architecture?
+				\item Can we simplify the deployment of new services?
 				\item Can we leverage existing industry proposals?
 			\end{itemize}
 		\end{alertblock}
@@ -289,7 +289,7 @@
 											
 \end{frame}
 
-\begin{frame}{Current CPE architectures are not modular: maintenance and new service deployement are hard.}
+\begin{frame}{Current CPE architectures are not modular: maintenance and new service deployment are hard.}
 										
 	\begin{columns}[T]
 		\begin{column}{.01\textwidth} % column designated by a command
@@ -306,7 +306,7 @@
 																																								   
 			\textbf{Today: Firmware-based Home Gateways}
 			\begin{itemize}
-				\item Embded system software
+				\item Embed system software
 				\item Complete system update to deploy new feature
 				\item Still widely used by vendors
 			\end{itemize}
@@ -340,7 +340,7 @@
 																																								   
 			\textbf{ GNU/Linux Home Gateways}
 			\begin{itemize}
-				\item Stable, tested, reusable codebase
+				\item Stable, tested, reusable code-base
 				\item Modularity through package management
 				\item Limited support for Service Oriented Architecture
 			\end{itemize}
@@ -434,7 +434,7 @@
 																																								   
 			\textbf{ GNU/Linux Home Gateways}
 			\begin{itemize}
-				\item Stable, tested, reusable codebase
+				\item Stable, tested, reusable code-base
 				\item Modularity through package management
 				\item Limited support for Service Oriented Architecture
 			\end{itemize}
@@ -505,7 +505,7 @@
 							
 	\begin{textblock*}{7cm}(3cm,0.5\textheight)
 		\begin{alertblock}{}
-			\textbf{  We didn't fix the major issues. }
+			\textbf{  We did not fix the major issues. }
 			\begin{itemize}
 				\item Deploying new software is easier, but still difficult due to the scale.
 				\item CAPEX and OPEX are still high.
@@ -531,7 +531,7 @@
 			\textbf{ Virtual CPE}
 			\begin{itemize}
 				\item Pulling Network Functions into the operator network
-				\item Shared Resources, optimized dimentionning
+				\item Shared Resources, optimized dimensioning
 				\item Managing $O(10^{3})$ Network Nodes is easier than $O(10^{6})$ of CPE.
 			\end{itemize}
 			\vspace{3mm}
@@ -605,8 +605,8 @@
 			\textbf{ETSI's NFV architecture makes the operator benefits from virtualization}
 			\begin{itemize}
 				\item Network Functions run on commodity hardware
-				\item No more middlebox vendor lock-in
-				\item Multivendor nature boost competition and lower prices
+				\item No more middle-box vendor lock-in
+				\item Multi-vendor nature boost competition and lower prices
 				\item Ongoing standardization efforts
 			\end{itemize}
 			\vspace{3mm}
@@ -663,7 +663,7 @@
 			\textbf{ This is where our contribution help }
 			\begin{itemize}
 				\item We propose a way to migrate progressively to this final model
-				\item We want to start benefitting from NFV as soon as possible
+				\item We want to start benefiting from NFV as soon as possible
 				\item We leverage standards as much as possible
 			\end{itemize}
 		\end{block}
@@ -692,7 +692,7 @@
 		\textbf{Parental Control}
 		\begin{itemize}
 			\item The service allows or denies the traffic (control plane), depending on schedule
-			\item The service detetects online gaming traffic and applies a daily quotas
+			\item The service detects on-line gaming traffic and applies a daily quotas
 			\item The service allow remote control and cross-devices policy
 		\end{itemize}
 	\end{flushleft}
@@ -703,11 +703,11 @@
 \end{frame}
 
 
-\begin{frame}{SvNF Lifecycle respects OSGi standard, while adding new semantics to fit Network Functions operations}
+\begin{frame}{SvNF Life-cycle respects OSGi standard, while adding new semantics to fit Network Functions operations}
 	\begin{flushleft}	
-		\textbf{Relation with OSGi lifecycle}
+		\textbf{Relation with OSGi life-cycle}
 		\begin{itemize}
-			\item We concider software and network dependencies
+			\item We consider software and network dependencies
 			\item If the vNF is not available, the module is not loaded
 			\item and we fall back on legacy mode
 		\end{itemize}
@@ -764,7 +764,7 @@
 	\vspace{1em}
 	\setbeamercolor{block title}{bg=applegreen}
 	\begin{block}{}
-		Media data is usually hosted on the CP network, but it can also be hosted in a Point Of Presence, a micro datacenter close to the user belonging to the SP network. The Streamer vNF is reponsible for delivery.
+		Media data is usually hosted on the CP network, but it can also be hosted in a Point Of Presence, a micro data-center close to the user belonging to the SP network. The Streamer vNF is responsible for delivery.
 	\end{block}
 \end{frame}
 
@@ -774,7 +774,7 @@
 	\vspace{2em}
 	\setbeamercolor{block title}{bg=applegreen}
 	\begin{block}{}
-		POP and Streamer vNF are provisionning is the responsability of a Caching Orchestrator, placed in the SP public cloud.
+		POP and Streamer vNF are provisioning is the responsibility of a Caching Orchestrator, placed in the SP public cloud.
 	\end{block}
 \end{frame}
 
@@ -784,13 +784,13 @@
 	\vspace{2em}
 	\setbeamercolor{block title}{bg=applegreen}
 	\begin{block}{}
-		POP and Streamer vNF are provisionning is the responsability of a Caching Orchestrator, placed in the SP public cloud.
+		POP and Streamer vNF are provisioning is the responsibility of a Caching Orchestrator, placed in the SP public cloud.
 	\end{block}
 		\begin{textblock*}{8cm}(3cm,0.4\textheight)
 		\begin{alertblock}{}
 			\textbf{ How does we forward user request to POP? }
 			\begin{itemize}
-				\item The traditionnal approach is to use DNS-Based Request routing or IP anycast
+				\item The traditional approach is to use DNS-Based Request routing or IP anycast
 				\item Research suggest using Software Defined Networks (SDN) for future deployments
 				\item We take this approach, by allowing the SvNF to route the user request to a particular POP.
 			\end{itemize}
@@ -900,7 +900,7 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 								
 \end{frame}
 
-\begin{frame}{We simulated 2 scenarios to evaluate overwall performances by counting SLA violations}
+\begin{frame}{We simulated 2 scenarios to evaluate overall performances by counting SLA violations}
 	
 			
 
@@ -965,12 +965,12 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 	\end{textblock*}		
 \end{frame}
 
-\begin{frame}{Provisionning decision highly impact the performance of the solution}
+\begin{frame}{Provisioning decision highly impact the performance of the solution}
 	\includegraphics[width=0.90\linewidth]{cachingStrat_evaluation.pdf}
 		\begin{columns}[T]
 		\begin{column}[T]{0.5 \textwidth} 
 		
-		\textbf{Provisionning too early}
+		\textbf{Provisioning too early}
 			\begin{itemize}
 				\item Each time a video is asked
 				\item Streamer vNF is saturated with requests that could have been served by CP
@@ -979,7 +979,7 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 										
 		\begin{column}[T]{0.5\textwidth} 
 										  
-			\textbf{Provisionning too late}
+			\textbf{Provisioning too late}
 			\begin{itemize}
 				\item Cached only when a big number of user ask for a video
 				\item Stream vNF is underused, CP network can't handle the load
@@ -990,12 +990,12 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Provisionning decision highly impact the performance of the solution}
+\begin{frame}{Provisioning decision highly impact the performance of the solution}
 	\includegraphics[width=0.90\linewidth]{cachingStrat_evaluation.pdf}
 		\begin{columns}[T]
 		\begin{column}[T]{0.5 \textwidth} 
 		
-		\textbf{Provisionning too early}
+		\textbf{Provisioning too early}
 			\begin{itemize}
 				\item Each time a video is asked
 				\item Streamer vNF is saturated with requests that could have been served by CP
@@ -1004,7 +1004,7 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 										
 		\begin{column}[T]{0.5\textwidth} 
 										  
-			\textbf{Provisionning too late}
+			\textbf{Provisioning too late}
 			\begin{itemize}
 				\item Cached only when a big number of user ask for a video
 				\item Stream vNF is underused, CP network can't handle the load
@@ -1018,9 +1018,9 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 		\begin{alertblock}{}
 			\textbf{ Can other parameters be considered? }
 			\begin{itemize}
-				\item Yes: other video metadata can be useful
-				\item Solution could be augmented with a push-based provisionning where popular video could be provisioned before publication
-				\item But local video popularity account for most of the predictibility for growing demand
+				\item Yes: other video meta-data can be useful
+				\item Solution could be augmented with a push-based provisioning where popular video could be provisioned before publication
+				\item But local video popularity account for most of the predictability for growing demand
 			\end{itemize}
 		\end{alertblock}
 	\end{textblock*}		
