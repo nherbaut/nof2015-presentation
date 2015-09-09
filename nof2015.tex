@@ -15,6 +15,23 @@
 \definecolor{applegreendark}{rgb}{0.35, 0.51, 0.0}
 \definecolor{applegreenpale}{rgb}{0.75, 0.91, 0.2}
 
+
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatletter
+
 \title[Migrating to a NFV-based HomeGateway: the SvNF approach] % (optional, only for long titles)
 {Migrating to a NFV-based Home Gateway}
 \subtitle{Introducing a Surrogate vNF approach}
