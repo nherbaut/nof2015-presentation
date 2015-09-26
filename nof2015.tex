@@ -54,9 +54,11 @@
 \date[NOF2015] % (optional)
 {The 6th International Conference On Network of the Future}
 \subject{Computer Science.}
-\titlegraphic{\includegraphics[height=1cm]{ub.jpg}\hspace*{2.5cm}~%
-   \includegraphics[height=1cm]{Logo_LaBRI_complet.jpg}\hspace*{1cm}~%
+\titlegraphic{\includegraphics[height=1cm]{ub.jpg}~%
+   \includegraphics[height=1cm]{Logo_LaBRI_complet.jpg}~%
+   \includegraphics[height=1cm]{viotech.jpg}~%
    \includegraphics[height=1cm]{top_logo1.jpg}
+   
    
 }
 
@@ -180,7 +182,7 @@
 																																								   
 			\textbf{ Set-Top-Box (STB)}
 			\begin{itemize}
-				\item Decode media IP flows to a display device (through HDMI)
+				\item Decode media IP flows to a display device
 				\item Live TV, Video On Demand ...
 				\item Catch-up TV, Recording ...
 				\item Legacy Digital terrestrial television ...
@@ -560,8 +562,8 @@
 			\textbf{General Approach}
 			\begin{itemize}
 				\item Replacing existing HG by a Layer-2 device, handling VoIP and Wifi.
-				\item Current functions (NAT and DHCP) are realized in the operator network
-				\item The Virtual Home Gateway can be used in mobility 
+				\item Current functions (eg. NAT and DHCP) are performed in the operator network
+				\item The Virtual Home Gateway for extended home
 			\end{itemize}
 										
 																																						
@@ -596,16 +598,16 @@
 					
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\includegraphics[width=0.9\textwidth]{vhgtrends.pdf}
 \end{frame}
 
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\includegraphics[width=0.9\textwidth]{vhgtrends-etsi-emphasis.pdf}
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\begin{centering}
 		\includegraphics[width=0.9\textwidth]{etsi-virtualisation-home-env.pdf}
 	\end{centering}
@@ -682,7 +684,7 @@
 	\setbeamercolor{block title}{bg=applegreen}
 	\begin{textblock*}{8cm}(3cm,0.4\textheight)
 		\begin{block}{}
-			\textbf{ This is where our contribution help }
+			\textbf{ This is where our contribution helps }
 			\begin{itemize}
 				\item We propose a way to migrate progressively to this final model
 				\item We want to start benefiting from NFV as soon as possible
@@ -769,7 +771,7 @@
 \end{frame}
 
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign1.png}
 	\vspace{2em}
@@ -780,7 +782,7 @@
 	
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign2.png}
 	\vspace{1em}
@@ -790,7 +792,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign3.png}
 	\vspace{2em}
@@ -800,7 +802,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign3.png}
 	\vspace{2em}
@@ -820,7 +822,7 @@
 	\end{textblock*}		
 \end{frame}
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign4.png}
 	\vspace{1em}
@@ -831,7 +833,7 @@
 \end{frame}
 
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign5.png}
 		\vspace{1em}
@@ -843,7 +845,7 @@
 \end{frame}
 
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign6.png}
 	\vspace{1em}
@@ -854,7 +856,7 @@
 \end{frame}
 
 
-\begin{frame}[plain,T]{}
+\begin{frame}{}
 	\centering
 	\includegraphics[width=0.95\linewidth]{highleveldesign7.png}
 	\vspace{2em}
@@ -969,6 +971,25 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 	
 \end{frame}
 
+\begin{frame}{Assumptions}
+	
+			
+
+  
+		\begin{itemize}
+			\item Content Provider allow provisionning content in Service Providers Network
+			\item Simulation has been implemented with NS3
+			\item 200 Gateways
+			\item 300 Videos
+			\item SLA Violation criteria: less than 75\% of the target bitrate 10s after the request
+		\end{itemize}
+										  
+			
+	
+	
+	
+\end{frame}
+
 \begin{frame}{For the same bandwidth, our proposal - Scenario B - shows a drastic diminution of SLA violations.}
 	\includegraphics[width=0.90\linewidth]{CP+POP_evaluation.pdf}
 \end{frame}
@@ -980,8 +1001,8 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 			\textbf{ Is that really a surprise? }
 			\begin{itemize}
 				\item No: we considered streaming over HTTP, so delay is key and favor the PoP over CP.
-				\item But, only SP can provide with best-in-class delay since it can optimize both server selection and underlay network
-				\item So deploying this solution with the NFV approach offers both low cost and flexibility to SP.
+				\item But, being located in SP network limit hops and delay, and cross-ISP trafic
+				\item \textbf{So deploying this solution with the NFV approach offers both low cost and flexibility to SP.}
 			\end{itemize}
 		\end{alertblock}
 	\end{textblock*}		
