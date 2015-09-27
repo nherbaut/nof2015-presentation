@@ -556,7 +556,7 @@
 			\begin{itemize}
 				\item Pulling Network Functions into the operator network
 				\item Shared Resources, optimized dimensioning
-				\item Managing $O(10^{3})$ Network Nodes is easier than $O(10^{6})$ of CPE.
+				\item Managing 1.000s Network Nodes is easier than 1.000.000s of CPE.
 			\end{itemize}
 			\vspace{3mm}
 			\textbf{General Approach}
@@ -1009,28 +1009,53 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 \end{frame}
 
 
-\begin{frame}{Provisioning decisions}
+\begin{frame}{Video provisioning mechanisms}
+	
+\textbf{Push-based}	
+    
+    \begin{itemize}
+      \item Content Provider pro-actively push videos in PoP
+      
+    \end{itemize}
+
+\vspace{2em}
+\textbf{Pull-based}
+	\begin{itemize}
+		 \item Opportunistic caching of videos
+		 \item Need to React rapidly to flash crowds
+		\item Need to provision most popular videos
+	 \begin{itemize}
+	  \item Views count as a proxy to popularity
+		
+		
+	 \end{itemize}
+	 
+	   
+	\end{itemize}
+
+    
+    
 	
 \end{frame}
 
-\begin{frame}{Provisioning decision highly impact the performance of the solution}
+\begin{frame}{Selecting popular videos based on view counts}
 	\includegraphics[width=0.90\linewidth]{cachingStrat_evaluation.pdf}
 		\begin{columns}[T]
 		\begin{column}[T]{0.5 \textwidth} 
 		
-		\textbf{Provisioning too early}
+		\textbf{Selectioning too much}
 			\begin{itemize}
 				\item Each time a video is asked
-				\item Streamer vNF is saturated with requests that could have been served by CP
+				\item Streamer vNF is \textbf{saturated with requests} that could have been served by CP
 			\end{itemize}
 		\end{column}
 										
 		\begin{column}[T]{0.5\textwidth} 
 										  
-			\textbf{Provisioning too late}
+			\textbf{Selectioning too little}
 			\begin{itemize}
-				\item Cached only when a big number of user ask for a video
-				\item Stream vNF is underused, CP network can't handle the load
+				\item Cached only when a big number of users ask for a video
+				\item Stream vNF could be used more to help CP network
 			\end{itemize}
 			
 		\end{column}
@@ -1038,7 +1063,7 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Provisioning decision highly impact the performance of the solution}
+\begin{frame}{Selecting popular videos based on view counts}
 	\includegraphics[width=0.90\linewidth]{cachingStrat_evaluation.pdf}
 		\begin{columns}[T]
 		\begin{column}[T]{0.5 \textwidth} 
@@ -1046,34 +1071,36 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 		\textbf{Provisioning too early}
 			\begin{itemize}
 				\item Each time a video is asked
-				\item Streamer vNF is saturated with requests that could have been served by CP
+				\item Streamer vNF is \textbf{saturated with requests} that could have been served by CP
 			\end{itemize}
 		\end{column}
 										
 		\begin{column}[T]{0.5\textwidth} 
 										  
-			\textbf{Provisioning too late}
+			\textbf{Provisioning too much}
 			\begin{itemize}
-				\item Cached only when a big number of user ask for a video
-				\item Stream vNF is underused, CP network can't handle the load
+				\item Cached only when a big number of users ask for a video
+				\item Stream vNF could be used more to help CP network
 			\end{itemize}
 			
 		\end{column}
 																										
 	\end{columns}
 	
-		\begin{textblock*}{8cm}(3cm,0.4\textheight)
+			\begin{textblock*}{8cm}(3cm,0.4\textheight)
 		\begin{alertblock}{}
 			\textbf{ Can other parameters be considered? }
 			\begin{itemize}
 				\item Yes: other video meta-data can be useful
-				\item Solution could be augmented with a push-based provisioning where popular video could be provisioned before publication
+				\item We could also use user context information
 				\item But local video popularity account for most of the predictability for growing demand
 			\end{itemize}
 		\end{alertblock}
 	\end{textblock*}		
-	
 \end{frame}
+
+
+
 
 \begin{frame}{Conclusion and future work}
 	\begin{columns}[T]
