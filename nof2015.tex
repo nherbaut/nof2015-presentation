@@ -727,19 +727,7 @@
 \end{frame}
 
 
-\begin{frame}{SvNF Life-cycle respects OSGi standard, while adding new semantics to fit Network Functions operations}
-	\begin{flushleft}	
-		\textbf{Relation with OSGi life-cycle}
-		\begin{itemize}
-			\item We consider software and network dependencies
-			\item If the vNF is not available, the module is not loaded
-			\item and we fall back on legacy mode
-		\end{itemize}
-	\end{flushleft}
-	\vspace{2em}
-	\centering
-	\framebox{	\includegraphics[width=25em]{osgi.pdf}}\\
-\end{frame}
+
 
 
 \begin{frame}{Feasibility Study illustrated by a Content Delivery Use case}
@@ -1161,7 +1149,7 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 	\end{columns}
 	
 	
-	\pause
+	
 	
 			\begin{textblock*}{11cm}(1cm,20em)
 		\begin{block}
@@ -1202,6 +1190,20 @@ Squid &   14x        & 99\% 		& $\simeq$100		& 17x		& 99.3\% 		& $\simeq$100 \\\
 
 	}
 	
+\end{frame}
+
+\begin{frame}{SvNF Life-cycle respects OSGi standard, while adding new semantics to fit Network Functions operations}
+	\begin{flushleft}	
+		\textbf{Relation with OSGi life-cycle}
+		\begin{itemize}
+			\item We consider software and network dependencies
+			\item If the vNF is not available, the module is not loaded
+			\item and we fall back on legacy mode
+		\end{itemize}
+	\end{flushleft}
+	\vspace{2em}
+	\centering
+	\framebox{	\includegraphics[width=25em]{osgi.pdf}}\\
 \end{frame}
 
 
